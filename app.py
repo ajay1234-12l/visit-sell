@@ -11,6 +11,12 @@ from jose import jwt
 import config
 from database import read, write, next_id
 
+if os.environ.get("VERCEL"):
+    TMP = "/tmp"
+    for k,v in config.CFG["FILES"].items():
+        base = os.path.basename(v)
+        config.CFG["FILES"][k] = os.path.join(TMP, base)
+
 app = Flask(__name__, template_folder="templates", static_folder="static")
 CORS(app)
 app.secret_key = config.CFG["SECRET_KEY"]
@@ -357,9 +363,7 @@ def export_file(name):
     return send_file(path, as_attachment=True)
 
 if __name__ == "__main__":
-    # ensure data files exist
     for k,v in config.CFG["FILES"].items():
         read(k, [] if k!="settings" else config.CFG)
-    print("Starting Visit System at http://127.0.0.1:8000")
-    import uvicorn
-    uvicorn.run("app:app", host="0.0.0.0", port=8000, reload=False)
+    print("✅ Visit System running locally at http://127.0.0.1:8000")
+    app.run(host="0.0.0.0", port=8000)
