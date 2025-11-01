@@ -1,0 +1,35 @@
+<!-- templates/dashboard.html -->
+{% extends "layout.html" %}
+{% block content %}
+<div class="header">
+  <h1>VisitPro Dashboard</h1>
+  <a href="/admin" class="btn">Admin</a>
+</div>
+
+<div class="card">
+  <h3>Account</h3>
+  <div id="account_area">
+    <div id="auth_box">
+      <input id="login_username" placeholder="username"/><input id="login_password" placeholder="password" type="password"/><button onclick="login()">Login</button>
+      <div>Or <a href="#" onclick="showRegister()">Register</a></div>
+    </div>
+    <div id="user_box" style="display:none;">
+      <div id="user_info"></div>
+      <button onclick="logout()">Logout</button>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <h3>Start Visits</h3>
+  <input id="uid_input" placeholder="target uid"/>
+  <input id="visits_input" type="number" value="1000"/>
+  <div>Coins needed: <span id="coins_needed">1</span></div>
+  <button onclick="startTask()">Start</button>
+</div>
+
+<div class="card">
+  <h3>Your Tasks</h3>
+  <div id="tasks_area"></div>
+</div>
+{% endblock %}
