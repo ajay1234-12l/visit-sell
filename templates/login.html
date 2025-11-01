@@ -1,0 +1,19 @@
+<!-- templates/login.html -->
+{% extends "layout.html" %}
+{% block content %}
+<div class="card">
+  <h2>Login / Register</h2>
+  <div id="auth">
+    <div>
+      <input id="username" placeholder="username"/>
+      <input id="password" placeholder="password" type="password"/>
+      <button onclick="login()">Login</button>
+    </div>
+    <div style="margin-top:10px;">
+      <input id="r_username" placeholder="new username"/>
+      <input id="r_password" placeholder="new password" type="password"/>
+      <button onclick="register()">Register</button>
+    </div>
+  </div>
+</div>
+{% endblock %}
