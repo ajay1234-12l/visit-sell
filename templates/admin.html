@@ -1,0 +1,36 @@
+<!-- templates/admin.html -->
+{% extends "layout.html" %}
+{% block content %}
+<div class="header">
+  <h1>Admin Panel</h1>
+  <a href="/" class="btn">Home</a>
+</div>
+
+<div class="card">
+  <h3>Admin Login</h3>
+  <input id="admin_user" placeholder="admin username"/><input id="admin_pass" placeholder="admin password" type="password"/>
+  <button onclick="adminLogin()">Login</button>
+</div>
+
+<div class="card">
+  <h3>Quick Actions</h3>
+  <input id="a_uid" placeholder="user id"/><input id="a_coins" placeholder="coins"/><button onclick="adminAddCoins()">Add Coins</button>
+  <input id="rid" placeholder="redeem id"/><button onclick="approveRedeem()">Approve Redeem</button>
+  <button onclick="loadUsers()">Load Users</button>
+</div>
+
+<div class="card">
+  <h3>Users</h3>
+  <div id="users_area"></div>
+</div>
+
+<div class="card">
+  <h3>Redeems</h3>
+  <div id="redeems_area"></div>
+</div>
+
+<div class="card">
+  <h3>History</h3>
+  <div id="history_area"></div>
+</div>
+{% endblock %}
